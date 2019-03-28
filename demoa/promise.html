@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>es6</div>
+</body>
+<script>
+     function sum2 (...m){
+        let total=0;
+        for(var i of m){
+            total+=i;
+        }
+        console.log(`total:${total}`)
+    }
+    sum2(2,3,4);
+    let sum3=(...m)=>{
+        let total=0;
+        for(var i of m){
+            total+=i;
+        }
+        console.log(`total:${total}`)
+    }
+    sum3(34,4,5)
+    // let [x,y]=[3,4];
+    // console.log(...[x,y])
+    // let arr1=[1,2];let arr2=[3,4];
+    // console.log([...arr1,...arr2]);
+    // var [x,...y]=[1,2,3,4,5];
+    // console.log(y)
+    let [a,b]='wer';
+    console.log(`${a}+${b}`);
+    let xy=[...'we'];
+    console.log(`${xy}`)
+</script>
+</html>

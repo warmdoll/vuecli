@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"> </script>
+    <script src="../node_modules/axios/dist/axios.js"> </script>
+</head>
+<body>
+    <div id="app">
+        <h1>axiose插件</h1>
+        <div>
+            <span>{{msg}}</span>
+        </div>
+    </div>
+</body>
+<script>
+    new vue({
+        el:"#app",
+        data:{
+            msg:""
+        },
+        mounted(){
+            // 全局拦截
+           axios.interceptors.request.use( config=>{
+               console.log('request init')
+               return config
+           })
+           axios.interceptors.request.use(response=>{
+               console.log('respons init')
+               return response
+           })
+        },
+       
+        methods:{
+            get(){
+                axios.get("../package.json",{
+                    params:{
+                        userid:'120'
+                    },
+                    headers:{
+                        token:'2we'
+                    },
+                    before(){
+
+                    }
+                }).then(res=>{
+                    this.mas=res.data;
+                }).catch(erro=>{
+
+                })
+            },
+            post(){
+               axios.post('../package.json',{
+                   userid:'123'
+               },{
+                   headers:{
+                       token:'sds'
+                   }
+               }).then(res=>{
+
+               }).catch(res=>{
+
+               })
+            },
+           http(){
+               axios({
+                   url:'../package.json',
+                   method:'get',
+                   data:{
+                    //    post请求传参data
+                       userid:'23'
+                   },
+                   params:{
+                    //    get 请求传参用params
+                       userid:'23'
+                   },
+                   headers:{
+                       token:'sf'
+                   }
+               }).then(res=>{
+
+               }),cathc(res=>{
+
+               })
+           }
+
+        }
+    })
+</script>
+</html>
